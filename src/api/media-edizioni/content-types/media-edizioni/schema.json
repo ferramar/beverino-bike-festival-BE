@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "media_edizionis",
+  "info": {
+    "singularName": "media-edizioni",
+    "pluralName": "media-edizionis",
+    "displayName": "Media edizioni"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "edizione": {
+      "type": "integer",
+      "required": true
+    },
+    "media": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "type": "media",
+      "multiple": true,
+      "required": true
+    }
+  }
+}
