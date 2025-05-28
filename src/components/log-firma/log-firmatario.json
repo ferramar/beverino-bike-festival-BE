@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_log_firma_log_firmatarios",
+  "info": {
+    "displayName": "log_firmatario",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "orario_firmatario": {
+      "type": "datetime",
+      "required": true
+    },
+    "ip_firmatario": {
+      "type": "string",
+      "required": true
+    },
+    "user_agent_firmatario": {
+      "type": "string"
+    }
+  }
+}

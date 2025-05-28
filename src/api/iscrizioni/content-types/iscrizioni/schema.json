@@ -1,0 +1,63 @@
+{
+  "kind": "collectionType",
+  "collectionName": "iscrizionis",
+  "info": {
+    "singularName": "iscrizioni",
+    "pluralName": "iscrizionis",
+    "displayName": "iscrizioni",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "nome": {
+      "type": "string",
+      "required": true
+    },
+    "cognome": {
+      "type": "string",
+      "required": true
+    },
+    "codice_registrazione": {
+      "type": "string",
+      "unique": true,
+      "required": true
+    },
+    "liberatoriaAccettata": {
+      "type": "boolean",
+      "required": true
+    },
+    "log_firma_liberatoria": {
+      "displayName": "log_firmatario",
+      "type": "component",
+      "repeatable": false,
+      "component": "log-firma.log-firmatario"
+    },
+    "pasta_party": {
+      "type": "boolean"
+    },
+    "conteggio_pastaparty": {
+      "type": "integer"
+    },
+    "liberatoriaPdf": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "files"
+      ]
+    },
+    "stato_pagamento": {
+      "type": "enumeration",
+      "enum": [
+        "in_attesa",
+        "completato",
+        "rimborsato"
+      ]
+    },
+    "id_pagamento": {
+      "type": "string"
+    }
+  }
+}

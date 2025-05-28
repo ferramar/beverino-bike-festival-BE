@@ -373,6 +373,51 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiIscrizioniIscrizioni extends Struct.CollectionTypeSchema {
+  collectionName: 'iscrizionis';
+  info: {
+    description: '';
+    displayName: 'iscrizioni';
+    pluralName: 'iscrizionis';
+    singularName: 'iscrizioni';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    codice_registrazione: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    cognome: Schema.Attribute.String & Schema.Attribute.Required;
+    conteggio_pastaparty: Schema.Attribute.Integer;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    id_pagamento: Schema.Attribute.String;
+    liberatoriaAccettata: Schema.Attribute.Boolean & Schema.Attribute.Required;
+    liberatoriaPdf: Schema.Attribute.Media<'files'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::iscrizioni.iscrizioni'
+    > &
+      Schema.Attribute.Private;
+    log_firma_liberatoria: Schema.Attribute.Component<
+      'log-firma.log-firmatario',
+      false
+    >;
+    nome: Schema.Attribute.String & Schema.Attribute.Required;
+    pasta_party: Schema.Attribute.Boolean;
+    publishedAt: Schema.Attribute.DateTime;
+    stato_pagamento: Schema.Attribute.Enumeration<
+      ['in_attesa', 'completato', 'rimborsato']
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiMediaEdizioniMediaEdizioni
   extends Struct.CollectionTypeSchema {
   collectionName: 'media_edizionis';
@@ -913,6 +958,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::iscrizioni.iscrizioni': ApiIscrizioniIscrizioni;
       'api::media-edizioni.media-edizioni': ApiMediaEdizioniMediaEdizioni;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
