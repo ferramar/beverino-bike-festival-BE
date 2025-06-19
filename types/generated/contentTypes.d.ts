@@ -373,6 +373,37 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiCategorieSponsorCategorieSponsor
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'categorie_sponsors';
+  info: {
+    description: '';
+    displayName: 'categorie-sponsor';
+    pluralName: 'categorie-sponsors';
+    singularName: 'categorie-sponsor';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::categorie-sponsor.categorie-sponsor'
+    > &
+      Schema.Attribute.Private;
+    nome: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    sponsors: Schema.Attribute.Relation<'manyToMany', 'api::sponsor.sponsor'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiIscrizioniIscrizioni extends Struct.CollectionTypeSchema {
   collectionName: 'iscrizionis';
   info: {
@@ -452,6 +483,7 @@ export interface ApiMediaEdizioniMediaEdizioni
 export interface ApiSponsorSponsor extends Struct.CollectionTypeSchema {
   collectionName: 'sponsors';
   info: {
+    description: '';
     displayName: 'sponsor';
     pluralName: 'sponsors';
     singularName: 'sponsor';
@@ -460,6 +492,10 @@ export interface ApiSponsorSponsor extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    categorie_sponsors: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::categorie-sponsor.categorie-sponsor'
+    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -472,6 +508,7 @@ export interface ApiSponsorSponsor extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     logo: Schema.Attribute.Media<'images'>;
     nome: Schema.Attribute.String & Schema.Attribute.Required;
+    principale: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     publishedAt: Schema.Attribute.DateTime;
     sito: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
@@ -989,6 +1026,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::categorie-sponsor.categorie-sponsor': ApiCategorieSponsorCategorieSponsor;
       'api::iscrizioni.iscrizioni': ApiIscrizioniIscrizioni;
       'api::media-edizioni.media-edizioni': ApiMediaEdizioniMediaEdizioni;
       'api::sponsor.sponsor': ApiSponsorSponsor;
