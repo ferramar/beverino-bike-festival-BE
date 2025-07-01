@@ -40,13 +40,9 @@
     "conteggio_pastaparty": {
       "type": "integer"
     },
-    "liberatoriaPdf": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "files"
-      ]
+    "liberatoriaPdfUrl": {
+      "type": "string",
+      "required": false
     },
     "stato_pagamento": {
       "type": "enumeration",

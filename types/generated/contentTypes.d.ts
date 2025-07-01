@@ -426,7 +426,7 @@ export interface ApiIscrizioniIscrizioni extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     id_pagamento: Schema.Attribute.String;
     liberatoriaAccettata: Schema.Attribute.Boolean & Schema.Attribute.Required;
-    liberatoriaPdf: Schema.Attribute.Media<'files'>;
+    liberatoriaPdfUrl: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
