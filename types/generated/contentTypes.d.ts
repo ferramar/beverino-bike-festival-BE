@@ -404,6 +404,42 @@ export interface ApiCategorieSponsorCategorieSponsor
   };
 }
 
+export interface ApiFaqFaq extends Struct.CollectionTypeSchema {
+  collectionName: 'faqs';
+  info: {
+    description: '';
+    displayName: 'faq';
+    pluralName: 'faqs';
+    singularName: 'faq';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    attivo: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    domanda: Schema.Attribute.String & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::faq.faq'> &
+      Schema.Attribute.Private;
+    ordine: Schema.Attribute.Integer &
+      Schema.Attribute.Unique &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      >;
+    publishedAt: Schema.Attribute.DateTime;
+    risposta: Schema.Attribute.Blocks & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiIscrizioniIscrizioni extends Struct.CollectionTypeSchema {
   collectionName: 'iscrizionis';
   info: {
@@ -1027,6 +1063,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::categorie-sponsor.categorie-sponsor': ApiCategorieSponsorCategorieSponsor;
+      'api::faq.faq': ApiFaqFaq;
       'api::iscrizioni.iscrizioni': ApiIscrizioniIscrizioni;
       'api::media-edizioni.media-edizioni': ApiMediaEdizioniMediaEdizioni;
       'api::sponsor.sponsor': ApiSponsorSponsor;

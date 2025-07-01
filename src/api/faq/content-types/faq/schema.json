@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "faqs",
+  "info": {
+    "singularName": "faq",
+    "pluralName": "faqs",
+    "displayName": "faq",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "domanda": {
+      "type": "string",
+      "required": true
+    },
+    "risposta": {
+      "type": "blocks",
+      "required": true
+    },
+    "ordine": {
+      "type": "integer",
+      "unique": true,
+      "min": 0
+    },
+    "attivo": {
+      "type": "boolean",
+      "default": true
+    }
+  }
+}
