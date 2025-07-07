@@ -460,6 +460,11 @@ export interface ApiIscrizioniIscrizioni extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    data_invio_email_conferma: Schema.Attribute.DateTime;
+    email: Schema.Attribute.Email & Schema.Attribute.Required;
+    email_conferma_inviata: Schema.Attribute.Boolean &
+      Schema.Attribute.DefaultTo<false>;
+    id_email_resend: Schema.Attribute.String;
     id_pagamento: Schema.Attribute.String;
     liberatoriaAccettata: Schema.Attribute.Boolean & Schema.Attribute.Required;
     liberatoriaPdfUrl: Schema.Attribute.String;
@@ -479,6 +484,10 @@ export interface ApiIscrizioniIscrizioni extends Struct.CollectionTypeSchema {
     stato_pagamento: Schema.Attribute.Enumeration<
       ['in_attesa', 'completato', 'rimborsato']
     >;
+    taglia_maglietta: Schema.Attribute.Enumeration<
+      ['XS', 'S', 'M', 'L', 'XL', 'XXL', 'XXXL']
+    > &
+      Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

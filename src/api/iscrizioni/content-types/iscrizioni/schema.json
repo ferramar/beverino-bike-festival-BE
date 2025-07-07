@@ -54,6 +54,33 @@
     },
     "id_pagamento": {
       "type": "string"
+    },
+    "email_conferma_inviata": {
+      "type": "boolean",
+      "default": false
+    },
+    "data_invio_email_conferma": {
+      "type": "datetime"
+    },
+    "id_email_resend": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "taglia_maglietta": {
+      "type": "enumeration",
+      "enum": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL",
+        "XXXL"
+      ],
+      "required": true
     }
   }
 }
