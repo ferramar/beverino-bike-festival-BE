@@ -1,15 +1,14 @@
-// config/plugins.js
 module.exports = ({ env }) => ({
   upload: {
     config: {
-      provider: 'cloudinary',
+      provider: '@strapi/provider-upload-cloudinary', // Path completo per v5
       providerOptions: {
         cloud_name: env('CLOUDINARY_NAME'),
         api_key: env('CLOUDINARY_KEY'),
         api_secret: env('CLOUDINARY_SECRET'),
       },
       actionOptions: {
-        upload: {
+        uploadStream: {
           folder: 'beverino-bike-festival',
           use_filename: true,
           unique_filename: false,
@@ -44,6 +43,9 @@ module.exports = ({ env }) => ({
             }
           ],
           tags: ['beverino-bike-festival', `year-${new Date().getFullYear()}`]
+        },
+        upload: {
+          folder: 'beverino-bike-festival',
         },
         delete: {},
       },
