@@ -452,15 +452,25 @@ export interface ApiIscrizioniIscrizioni extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    cap: Schema.Attribute.String & Schema.Attribute.Required;
+    cittaRilascio: Schema.Attribute.String & Schema.Attribute.Required;
     codice_registrazione: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
     cognome: Schema.Attribute.String & Schema.Attribute.Required;
-    conteggio_pastaparty: Schema.Attribute.Integer;
+    cognomeTutore: Schema.Attribute.String;
+    conteggio_pastaparty: Schema.Attribute.Integer &
+      Schema.Attribute.DefaultTo<0>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     data_invio_email_conferma: Schema.Attribute.DateTime;
+    dataNascita: Schema.Attribute.Date & Schema.Attribute.Required;
+    dataRilascioDocumento: Schema.Attribute.Date & Schema.Attribute.Required;
+    dati_genitore: Schema.Attribute.Component<
+      'dati-genitore.dati-genitore',
+      false
+    >;
     email: Schema.Attribute.Email & Schema.Attribute.Required;
     email_conferma_inviata: Schema.Attribute.Boolean &
       Schema.Attribute.DefaultTo<false>;
@@ -478,15 +488,23 @@ export interface ApiIscrizioniIscrizioni extends Struct.CollectionTypeSchema {
       'log-firma.log-firmatario',
       false
     >;
+    luogoNascita: Schema.Attribute.String & Schema.Attribute.Required;
     nome: Schema.Attribute.String & Schema.Attribute.Required;
-    pasta_party: Schema.Attribute.Boolean;
+    nomeTutore: Schema.Attribute.String;
+    numeroCivico: Schema.Attribute.String & Schema.Attribute.Required;
+    numeroDocumento: Schema.Attribute.String & Schema.Attribute.Required;
+    pasta_party: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     publishedAt: Schema.Attribute.DateTime;
+    residenza: Schema.Attribute.String & Schema.Attribute.Required;
     stato_pagamento: Schema.Attribute.Enumeration<
       ['in_attesa', 'completato', 'rimborsato']
-    >;
+    > &
+      Schema.Attribute.DefaultTo<'in_attesa'>;
     taglia_maglietta: Schema.Attribute.Enumeration<
       ['XS', 'S', 'M', 'L', 'XL', 'XXL', 'XXXL']
     > &
+      Schema.Attribute.Required;
+    tipoDocumento: Schema.Attribute.Enumeration<['cartaIdentita', 'patente']> &
       Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &

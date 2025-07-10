@@ -19,6 +19,62 @@
       "type": "string",
       "required": true
     },
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "luogoNascita": {
+      "type": "string",
+      "required": true
+    },
+    "dataNascita": {
+      "type": "date",
+      "required": true
+    },
+    "residenza": {
+      "type": "string",
+      "required": true
+    },
+    "numeroCivico": {
+      "type": "string",
+      "required": true
+    },
+    "cap": {
+      "type": "string",
+      "required": true
+    },
+    "tipoDocumento": {
+      "type": "enumeration",
+      "enum": [
+        "cartaIdentita",
+        "patente"
+      ],
+      "required": true
+    },
+    "numeroDocumento": {
+      "type": "string",
+      "required": true
+    },
+    "cittaRilascio": {
+      "type": "string",
+      "required": true
+    },
+    "dataRilascioDocumento": {
+      "type": "date",
+      "required": true
+    },
+    "dati_genitore": {
+      "displayName": "dati_genitore",
+      "type": "component",
+      "repeatable": false,
+      "component": "dati-genitore.dati-genitore"
+    },
+    "nomeTutore": {
+      "type": "string"
+    },
+    "cognomeTutore": {
+      "type": "string"
+    },
     "codice_registrazione": {
       "type": "string",
       "unique": true,
@@ -34,40 +90,16 @@
       "repeatable": false,
       "component": "log-firma.log-firmatario"
     },
-    "pasta_party": {
-      "type": "boolean"
-    },
-    "conteggio_pastaparty": {
-      "type": "integer"
-    },
     "liberatoriaPdfUrl": {
-      "type": "string",
-      "required": false
-    },
-    "stato_pagamento": {
-      "type": "enumeration",
-      "enum": [
-        "in_attesa",
-        "completato",
-        "rimborsato"
-      ]
-    },
-    "id_pagamento": {
       "type": "string"
     },
-    "email_conferma_inviata": {
+    "pasta_party": {
       "type": "boolean",
       "default": false
     },
-    "data_invio_email_conferma": {
-      "type": "datetime"
-    },
-    "id_email_resend": {
-      "type": "string"
-    },
-    "email": {
-      "type": "email",
-      "required": true
+    "conteggio_pastaparty": {
+      "type": "integer",
+      "default": 0
     },
     "taglia_maglietta": {
       "type": "enumeration",
@@ -81,6 +113,28 @@
         "XXXL"
       ],
       "required": true
+    },
+    "stato_pagamento": {
+      "type": "enumeration",
+      "enum": [
+        "in_attesa",
+        "completato",
+        "rimborsato"
+      ],
+      "default": "in_attesa"
+    },
+    "id_pagamento": {
+      "type": "string"
+    },
+    "email_conferma_inviata": {
+      "type": "boolean",
+      "default": false
+    },
+    "data_invio_email_conferma": {
+      "type": "datetime"
+    },
+    "id_email_resend": {
+      "type": "string"
     }
   }
 }

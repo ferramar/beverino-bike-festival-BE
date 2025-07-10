@@ -1,0 +1,65 @@
+{
+  "collectionName": "components_dati_genitore_dati_genitores",
+  "info": {
+    "displayName": "dati_genitore"
+  },
+  "options": {},
+  "attributes": {
+    "nome": {
+      "type": "string",
+      "required": true
+    },
+    "cognome": {
+      "type": "string",
+      "required": true
+    },
+    "luogoNascita": {
+      "type": "string",
+      "required": true
+    },
+    "dataNascita": {
+      "type": "date",
+      "required": true
+    },
+    "comuneResidenza": {
+      "type": "string",
+      "required": true
+    },
+    "viaResidenza": {
+      "type": "string",
+      "required": true
+    },
+    "numeroCivico": {
+      "type": "string",
+      "required": true
+    },
+    "cap": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "tipoDocumento": {
+      "type": "enumeration",
+      "enum": [
+        "cartaIdentita",
+        "patente"
+      ],
+      "required": true
+    },
+    "numeroDocumento": {
+      "type": "string",
+      "required": true
+    },
+    "cittaRilascio": {
+      "type": "string",
+      "required": true
+    },
+    "dataRilascioDocumento": {
+      "type": "date",
+      "required": true
+    }
+  }
+}
