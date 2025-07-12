@@ -504,6 +504,8 @@ export interface ApiIscrizioniIscrizioni extends Struct.CollectionTypeSchema {
       ['XS', 'S', 'M', 'L', 'XL', 'XXL', 'XXXL']
     > &
       Schema.Attribute.Required;
+    tipo_gara: Schema.Attribute.Enumeration<['ciclistica', 'running']> &
+      Schema.Attribute.Required;
     tipoDocumento: Schema.Attribute.Enumeration<['cartaIdentita', 'patente']> &
       Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;

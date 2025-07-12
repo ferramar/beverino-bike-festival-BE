@@ -101,6 +101,14 @@
       "type": "integer",
       "default": 0
     },
+    "tipo_gara": {
+      "type": "enumeration",
+      "enum": [
+        "ciclistica",
+        "running"
+      ],
+      "required": true
+    },
     "taglia_maglietta": {
       "type": "enumeration",
       "enum": [
