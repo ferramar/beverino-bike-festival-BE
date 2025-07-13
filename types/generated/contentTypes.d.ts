@@ -459,6 +459,7 @@ export interface ApiIscrizioniIscrizioni extends Struct.CollectionTypeSchema {
       Schema.Attribute.Unique;
     cognome: Schema.Attribute.String & Schema.Attribute.Required;
     cognomeTutore: Schema.Attribute.String;
+    comuneResidenza: Schema.Attribute.String & Schema.Attribute.Required;
     conteggio_pastaparty: Schema.Attribute.Integer &
       Schema.Attribute.DefaultTo<0>;
     createdAt: Schema.Attribute.DateTime;
@@ -496,6 +497,7 @@ export interface ApiIscrizioniIscrizioni extends Struct.CollectionTypeSchema {
     pasta_party: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     publishedAt: Schema.Attribute.DateTime;
     residenza: Schema.Attribute.String & Schema.Attribute.Required;
+    session_token: Schema.Attribute.String & Schema.Attribute.Unique;
     stato_pagamento: Schema.Attribute.Enumeration<
       ['in_attesa', 'completato', 'rimborsato']
     > &
