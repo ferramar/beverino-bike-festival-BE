@@ -404,6 +404,96 @@ export interface ApiCategorieSponsorCategorieSponsor
   };
 }
 
+export interface ApiConvenzioniConvenzioni extends Struct.CollectionTypeSchema {
+  collectionName: 'convenzionis';
+  info: {
+    displayName: 'convenzioni';
+    pluralName: 'convenzionis';
+    singularName: 'convenzioni';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    attiva: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<true>;
+    categoria: Schema.Attribute.Enumeration<
+      ['alloggio', 'ristorazione', 'negozio', 'wellness', 'servizi', 'altro']
+    > &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'altro'>;
+    colore: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 7;
+      }>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    descrizione: Schema.Attribute.Text &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 500;
+      }>;
+    dettagli_utilizzo: Schema.Attribute.Text &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 300;
+      }>;
+    email: Schema.Attribute.Email;
+    immagine: Schema.Attribute.Media<'images'>;
+    indirizzo: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::convenzioni.convenzioni'
+    > &
+      Schema.Attribute.Private;
+    nome: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
+    ordine: Schema.Attribute.Integer &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      > &
+      Schema.Attribute.DefaultTo<999>;
+    percentuale_sconto: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 100;
+          min: 0;
+        },
+        number
+      > &
+      Schema.Attribute.DefaultTo<10>;
+    publishedAt: Schema.Attribute.DateTime;
+    telefono: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 20;
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    validita: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
+    website: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
+  };
+}
+
 export interface ApiFaqFaq extends Struct.CollectionTypeSchema {
   collectionName: 'faqs';
   info: {
@@ -1094,6 +1184,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::categorie-sponsor.categorie-sponsor': ApiCategorieSponsorCategorieSponsor;
+      'api::convenzioni.convenzioni': ApiConvenzioniConvenzioni;
       'api::faq.faq': ApiFaqFaq;
       'api::iscrizioni.iscrizioni': ApiIscrizioniIscrizioni;
       'api::media-edizioni.media-edizioni': ApiMediaEdizioniMediaEdizioni;

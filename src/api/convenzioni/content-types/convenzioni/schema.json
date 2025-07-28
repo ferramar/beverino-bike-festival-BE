@@ -1,0 +1,91 @@
+{
+  "kind": "collectionType",
+  "collectionName": "convenzionis",
+  "info": {
+    "singularName": "convenzioni",
+    "pluralName": "convenzionis",
+    "displayName": "convenzioni"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "nome": {
+      "type": "string",
+      "required": true,
+      "maxLength": 255
+    },
+    "categoria": {
+      "type": "enumeration",
+      "enum": [
+        "alloggio",
+        "ristorazione",
+        "negozio",
+        "wellness",
+        "servizi",
+        "altro"
+      ],
+      "required": true,
+      "default": "altro"
+    },
+    "percentuale_sconto": {
+      "type": "integer",
+      "required": true,
+      "min": 0,
+      "max": 100,
+      "default": 10
+    },
+    "descrizione": {
+      "type": "text",
+      "required": true,
+      "maxLength": 500
+    },
+    "dettagli_utilizzo": {
+      "type": "text",
+      "required": true,
+      "maxLength": 300
+    },
+    "immagine": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "indirizzo": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "telefono": {
+      "type": "string",
+      "maxLength": 20
+    },
+    "email": {
+      "type": "email"
+    },
+    "website": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "validita": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "colore": {
+      "type": "string",
+      "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
+      "maxLength": 7
+    },
+    "ordine": {
+      "type": "integer",
+      "default": 999,
+      "min": 0
+    },
+    "attiva": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    }
+  }
+}
