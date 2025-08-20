@@ -594,8 +594,7 @@ export interface ApiIscrizioniIscrizioni extends Struct.CollectionTypeSchema {
       Schema.Attribute.DefaultTo<'in_attesa'>;
     taglia_maglietta: Schema.Attribute.Enumeration<
       ['XS', 'S', 'M', 'L', 'XL', 'XXL', 'XXXL']
-    > &
-      Schema.Attribute.Required;
+    >;
     tipo_gara: Schema.Attribute.Enumeration<['ciclistica', 'running']> &
       Schema.Attribute.Required;
     tipoDocumento: Schema.Attribute.Enumeration<['cartaIdentita', 'patente']> &

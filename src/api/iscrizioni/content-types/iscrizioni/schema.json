@@ -129,7 +129,7 @@
         "XXL",
         "XXXL"
       ],
-      "required": true
+      "required": false
     },
     "stato_pagamento": {
       "type": "enumeration",
