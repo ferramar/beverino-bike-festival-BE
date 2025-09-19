@@ -1,6 +1,6 @@
 export default {
   rest: {
-    defaultLimit: 25,
+    defaultLimit: 200,
     maxLimit: 200,
     withCount: true,
   },
